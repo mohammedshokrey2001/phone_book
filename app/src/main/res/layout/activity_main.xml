@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/one"
+    android:background="@drawable/bn"
+    android:backgroundTintMode="screen"
+    android:hapticFeedbackEnabled="false"
     tools:context=".MainActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton_go_next"
         android:layout_width="61dp"
         android:layout_height="62dp"
-        android:layout_marginEnd="332dp"
+        android:layout_marginEnd="304dp"
         android:layout_marginBottom="44dp"
         android:clickable="true"
         app:backgroundTint="#4444C8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="@android:drawable/ic_menu_call" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

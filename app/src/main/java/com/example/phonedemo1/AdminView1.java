@@ -52,6 +52,9 @@ public class AdminView1 extends AppCompatActivity {
                     Toast.makeText(AdminView1.this, "the state is"+addUser, Toast.LENGTH_LONG).show();
                     name.setText("");
                     phone.setText("");
+                    mail.setText("");
+                    age.setText("");
+
 
                 }catch (Exception e){
                     Toast.makeText(AdminView1.this, "error in database entry", Toast.LENGTH_LONG).show();

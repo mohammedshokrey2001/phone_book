@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,9 +34,6 @@ public class ViewALL extends AppCompatActivity {
       adapter();
 
 
-
-
-
     }
 
 
@@ -44,14 +42,14 @@ public class ViewALL extends AppCompatActivity {
         DBHelper db = new DBHelper(ViewALL.this);
          all_users = (ArrayList<DataModel1>) db.getAllUsers();
         ViewAdapter adapter = new ViewAdapter( all_users,listener);
-        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(getApplication());
+        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        DividerItemDecoration dividerItemDecoration  = new DividerItemDecoration(recyclerView.getContext(),
+       /* DividerItemDecoration dividerItemDecoration  = new DividerItemDecoration(recyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
+        */recyclerView.setAdapter(adapter);
 
 
 
@@ -72,7 +70,7 @@ public class ViewALL extends AppCompatActivity {
                 intent.putExtra("id", idd);
 
 
-               // Toast.makeText(getApplicationContext(), "id 111 = "+all_users.get(postion).getId(), Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), "id 111 = "+all_users.get(postion).getId(), Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         };
