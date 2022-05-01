@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bn"
-    android:backgroundTintMode="screen"
+    android:background="@drawable/a"
+    android:backgroundTintMode="multiply"
     android:hapticFeedbackEnabled="false"
     tools:context=".MainActivity">
 
@@ -13,7 +13,7 @@
         android:id="@+id/floatingActionButton_go_next"
         android:layout_width="61dp"
         android:layout_height="62dp"
-        android:layout_marginEnd="304dp"
+        android:layout_marginEnd="268dp"
         android:layout_marginBottom="44dp"
         android:clickable="true"
         app:backgroundTint="#4444C8"

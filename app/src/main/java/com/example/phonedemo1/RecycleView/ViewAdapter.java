@@ -18,6 +18,10 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
 
     private ArrayList<DataModel1> All_Users;
     private RecycleViewListener listener;
+
+
+
+
     public ViewAdapter(ArrayList<DataModel1> all_Users,RecycleViewListener listener) {
         All_Users = all_Users;
         this.listener = listener;
@@ -38,7 +42,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String name = All_Users.get(position).getName();
-        String isActive = All_Users.get(position).isIs_Active() ==true ? "Active User" :" Disabled User";
+        String isActive = All_Users.get(position).isIs_Active() ? "Active User" :" Disabled User";
         String phone = All_Users.get(position).getPhone_number();
          holder.name.setText(name);
          holder.isActive.setText(isActive);

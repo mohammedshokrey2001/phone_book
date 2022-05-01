@@ -38,7 +38,7 @@ public class EditContact extends AppCompatActivity {
 
                 helper.EditUser(radioButton.getText().toString(),input.getText().toString(),id);
 
-
+             startActivity(new Intent(getApplicationContext(),ViewALL.class));
             }
         });
 

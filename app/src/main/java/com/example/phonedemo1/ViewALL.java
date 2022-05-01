@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,8 @@ public class ViewALL extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<DataModel1> all_users;
     private ViewAdapter.RecycleViewListener listener;
+    private ViewAdapter mAdapter;
+    private DBHelper mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,6 @@ public class ViewALL extends AppCompatActivity {
         recyclerView= findViewById(R.id.Recycle_view_user);
 
 
-      adapter();
 
 
     }
@@ -39,9 +41,8 @@ public class ViewALL extends AppCompatActivity {
 
     void adapter(){
         setOnClickListener();
-        DBHelper db = new DBHelper(ViewALL.this);
-         all_users = (ArrayList<DataModel1>) db.getAllUsers();
-        ViewAdapter adapter = new ViewAdapter( all_users,listener);
+
+        mAdapter = new ViewAdapter( all_users,listener);
         RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -49,7 +50,7 @@ public class ViewALL extends AppCompatActivity {
        /* DividerItemDecoration dividerItemDecoration  = new DividerItemDecoration(recyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        */recyclerView.setAdapter(adapter);
+        */recyclerView.setAdapter(mAdapter);
 
 
 
@@ -77,4 +78,21 @@ public class ViewALL extends AppCompatActivity {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mDb = new DBHelper(ViewALL.this);
+        all_users = (ArrayList<DataModel1>) mDb.getAllUsers();
+
+        adapter();
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       mDb.close();
+    }
 }
