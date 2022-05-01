@@ -3,12 +3,16 @@ package com.example.phonedemo1;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminView1 extends AppCompatActivity {
@@ -93,5 +97,17 @@ public class AdminView1 extends AppCompatActivity {
 
     }*/
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        com.example.phonedemo1.Menu.menuSelection(item,getApplicationContext());
+        return super.onOptionsItemSelected(item);
+
+    }
 }
