@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -49,17 +50,26 @@ public class AdminView1 extends AppCompatActivity {
 
                     DBHelper dbHelper = new DBHelper(AdminView1.this);
 
+                    if (name.getText().toString().equals("") ||
+                            phone.getText().toString().equals("") ||
+                            age.getText().toString().equals("") ||
+                            mail.getText().toString().equals("") ){
+                        Toast.makeText(getApplicationContext(), "you must fill all fileds", Toast.LENGTH_SHORT).show();
 
-                    DataModel1 dataModel1 = new DataModel1(0, name.getText().toString(), phone.getText().toString(), age.getText().toString(), mail.getText().toString(), aSwitch_state.isChecked());
+                    }
 
-                    boolean addUser = dbHelper.addUser(dataModel1);
-                    Toast.makeText(AdminView1.this, "the state is"+addUser, Toast.LENGTH_LONG).show();
-                    name.setText("");
-                    phone.setText("");
-                    mail.setText("");
-                    age.setText("");
+                    else
+                        {
+                        DataModel1 dataModel1 = new DataModel1(0, name.getText().toString(), phone.getText().toString(), age.getText().toString(), mail.getText().toString(), aSwitch_state.isChecked());
 
+                        boolean addUser = dbHelper.addUser(dataModel1);
+                        Toast.makeText(AdminView1.this, "the state is" + addUser, Toast.LENGTH_LONG).show();
+                        name.setText("");
+                        phone.setText("");
+                        mail.setText("");
+                        age.setText("");
 
+                    }
                 }catch (Exception e){
                     Toast.makeText(AdminView1.this, "error in database entry", Toast.LENGTH_LONG).show();
 
@@ -97,10 +107,12 @@ public class AdminView1 extends AppCompatActivity {
 
     }*/
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
         return true;
     }
 
@@ -110,4 +122,5 @@ public class AdminView1 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
 }

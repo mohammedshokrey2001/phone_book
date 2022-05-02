@@ -154,6 +154,37 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public  List<DataModel1> searchUser(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        List<DataModel1> returnList = new ArrayList<DataModel1>();
+
+        String query = " SELECT * FROM "+USER_TABLE +" WHERE "+NAME +" like '%"+ name +"%';";
+        Cursor cursor = database.rawQuery(query,new String[]{});
+        if (cursor.moveToFirst()){
+            do{
+                String namee = cursor.getString(1);
+                int id = cursor.getInt(0);
+                String phone = cursor.getString(2);
+                boolean active_state = cursor.getInt(3)==1 ? true :false ;
+                String mail = cursor.getString(4);
+                String age = cursor.getString(5);
+
+
+
+                DataModel1 dataModel1 = new DataModel1(id,namee,phone, age, mail, active_state);
+
+                returnList.add(dataModel1);
+            }while (cursor.moveToNext());
+
+        }else {
+            /////
+
+        }
+        return  returnList;
+
+
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

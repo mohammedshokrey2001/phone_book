@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/app_bar_search2"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/About_App"
         android:title="About App"
         app:showAsAction="withText" />
@@ -10,7 +16,7 @@
         android:id="@+id/Setting"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Setting"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/Close"
         android:title="Close" />

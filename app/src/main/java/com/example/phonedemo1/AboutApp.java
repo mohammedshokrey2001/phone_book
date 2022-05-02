@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
 
 public class AboutApp extends AppCompatActivity {
 
@@ -14,10 +16,20 @@ public class AboutApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_app);
     }
+
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+        MenuItem menuItem;
+
+        menuItem = findViewById( R.id.app_bar_search2);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        searchView.setVisibility(View.INVISIBLE);
+
+
+
         return true;
     }
 
